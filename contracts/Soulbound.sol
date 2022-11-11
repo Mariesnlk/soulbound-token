@@ -5,9 +5,9 @@ pragma solidity 0.8.17;
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
-import "./ISBT.sol";
+import "./ISoulbound.sol";
 
-contract Soulbound is IERC721, EIP712, ISBT {
+contract Soulbound is IERC721, EIP712, ISoulbound {
     using Strings for uint256;
 
     bytes32 private constant MINT_TYPEHASH =
@@ -109,7 +109,7 @@ contract Soulbound is IERC721, EIP712, ISBT {
     function ownerOf(uint256 tokenId)
         external
         view
-        override(IERC721, ISBT)
+        override(IERC721, ISoulbound)
         tokenExists(tokenId)
         returns (address)
     {
